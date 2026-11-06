@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DOZO Concept Store</title>
+<meta name="description" content="DOZO Concept Store : vêtements, sneakers et accessoires pour hommes, femmes et enfants. Commandez sur WhatsApp, livraison en Côte d’Ivoire.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    --ink:#111;--paper:#f7f7f5;--card:#fff;--line:#e9e9e6;--muted:#6b6b6b;--band:#efefec;
+    --gold:#f4c542;--gold-soft:#fdf3cf;--promo:#b86e0c;--wa:#25d366;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){--ink:#f2f2f2;--paper:#121212;--card:#1c1c1c;--line:#2a2a2a;--muted:#a3a3a3;--band:#1a1a1a;--gold-soft:#2b2516;--promo:#f0a94a}
+  }
+  :root[data-theme="dark"]{--ink:#f2f2f2;--paper:#121212;--card:#1c1c1c;--line:#2a2a2a;--muted:#a3a3a3;--band:#1a1a1a;--gold-soft:#2b2516;--promo:#f0a94a}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{position:relative;font-family:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--paper);line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
+  body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:#0c0c0c}
+  a{color:inherit;text-decoration:none}
+  button,input,textarea{font:inherit;color:inherit}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  .ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+  header.top{background:#0c0c0c;color:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+  .top .wrap{display:flex;align-items:center;gap:32px;min-height:76px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+  .logo{display:flex;flex-direction:column;align-items:center;line-height:1;flex:none}
+  .logo .name{font-weight:800;font-size:30px;letter-spacing:.12em;color:var(--gold)}
+  .logo .sub{font-size:10px;letter-spacing:.35em;margin-top:4px}
+  nav.main{display:flex;gap:26px;margin-left:auto;font-size:15px}
+  nav.main a{padding:6px 0;border-bottom:2px solid transparent;transition:border-color .2s}
+  nav.main a:hover,nav.main a.active{border-color:var(--gold)}
+  .search{display:flex;align-items:center;gap:8px;background:#2a2a2a;border-radius:999px;padding:10px 16px;width:250px;color:#aaa}
+  .search input{background:none;border:0;color:#fff;width:100%;outline:none}
+  .search input::placeholder{color:#9a9a9a}
+  .wa-top{width:42px;height:42px;border-radius:50%;background:var(--wa);display:grid;place-items:center;color:#fff;flex:none}
+
+  .hero{background:linear-gradient(100deg,#0c0c0c 0%,#1d1a14 60%,#2e2513 100%);color:#fff;padding:88px 0 96px}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+  .brand-line{color:var(--gold);font-weight:800;letter-spacing:.14em;font-size:15px}
+  h1{font-size:clamp(40px,6vw,68px);line-height:1.04;letter-spacing:-.025em;font-weight:800;margin:18px 0 22px}
+  h1 em{font-style:normal;color:var(--gold)}
+  .lead{font-size:18px;color:#d6d6d6;max-width:480px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--gold);color:#111;font-weight:700;padding:16px 28px;border-radius:999px;border:0;font-size:16px;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:34px}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(244,197,66,.25)}
+  .btn.sm{font-size:14px;padding:12px 14px;gap:8px;margin-top:auto;width:100%}
+  .btn.sm .ic{width:18px;height:18px}
+  .hero-card{border:1px solid rgba(244,197,66,.25);background:rgba(255,255,255,.03);border-radius:24px;padding:40px}
+  .hero-card .logo{margin-bottom:34px}
+  .perks{display:grid;gap:24px}
+  .perk{display:flex;gap:16px;align-items:center}
+  .perk .box{width:50px;height:50px;border:2px solid var(--gold);border-radius:14px;display:grid;place-items:center;color:var(--gold);flex:none}
+  .perk strong{display:block;font-size:16px}
+  .perk span{color:#bdbdbd;font-size:14px}
+
+  .page{padding:64px 0 72px;min-height:60vh}
+  .page-head{margin-bottom:36px}
+  .page-head h1{font-size:clamp(34px,5vw,52px);margin:0 0 12px;color:var(--ink)}
+  .page-head p{color:var(--muted);max-width:620px}
+  section{padding:72px 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+  h2{font-size:30px;font-weight:800;letter-spacing:-.02em;position:relative;padding-right:64px}
+  h2::after{content:"";position:absolute;right:0;top:50%;width:44px;height:3px;background:var(--gold);border-radius:2px}
+  .more{font-size:14px;font-weight:600;color:var(--muted)}
+  .more:hover{color:var(--ink)}
+
+  .cats{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .cat{height:260px;border-radius:16px;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;padding:24px;text-align:center;transition:transform .25s}
+  .cat:hover{transform:translateY(-4px)}
+  .cat .ic{width:44px;height:44px;margin-bottom:auto;margin-top:36px;stroke-width:1.6}
+  .cat h3{font-size:20px;font-weight:800}
+  .cat small{font-size:13px;font-weight:600;opacity:.9;margin-top:6px}
+  .c1{background:linear-gradient(160deg,#3a3a3a,#0b0b0b)}
+  .c2{background:linear-gradient(160deg,#d9783a,#7a3513)}
+  .c3{background:linear-gradient(160deg,#3d7158,#15301f)}
+  .c4{background:linear-gradient(160deg,#6b737d,#22262b)}
+  .c5{background:linear-gradient(160deg,#8b5e3c,#2e1d10)}
+
+  .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+  .thumb{position:relative;height:230px;display:grid;place-items:center;background:var(--gold-soft)}
+  .thumb .ic{width:96px;height:96px;stroke-width:1.1;color:var(--ink);opacity:.8}
+  /* Pour vos photos : remplacer le <svg> du .thumb par <img src="photo.jpg" alt="..."> */
+  .badge{position:absolute;top:14px;left:14px;background:var(--gold);color:#111;font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px}
+  .info{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .info h4{font-size:15px;font-weight:600}
+  .price{font-weight:800;font-size:16px}
+  .old{text-decoration:line-through;color:#9a9a9a;font-weight:500;font-size:13px;margin-right:6px}
+  .new{color:var(--promo)}
+
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+  .chip{background:transparent;border:1px solid var(--line);color:var(--ink);padding:9px 18px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+  .why{background:var(--band);padding:44px 0}
+  .why .wrap{display:grid;grid-template-columns:1.2fr repeat(4,1fr);gap:24px;align-items:center}
+  .why .title{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:800}
+  .why .title .ic{width:30px;height:30px}
+  .why-item{display:flex;gap:12px}
+  .why-item .ic{color:#8a6a10;width:28px;height:28px}
+  .why-item strong{display:block;font-size:14px}
+  .why-item span{font-size:13px;color:var(--muted)}
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .prose p{color:var(--muted);margin-bottom:16px;font-size:17px}
+  .values{display:grid;gap:18px;margin-top:28px}
+  .value{display:flex;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .value .ic{color:#8a6a10;width:30px;height:30px}
+  .value strong{display:block;margin-bottom:4px}
+  .value span{color:var(--muted);font-size:14px}
+  .info-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .info-card .contact-line{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
+  .info-card .contact-line:last-child{border-bottom:0}
+  .info-card .ic{color:#8a6a10;width:22px;height:22px;margin-top:2px}
+  .field{display:grid;gap:8px;margin-bottom:16px}
+  .field label{font-weight:600;font-size:14px}
+  .field input,.field textarea{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;outline:none;width:100%}
+  .field input:focus,.field textarea:focus{border-color:var(--gold)}
+  .field textarea{min-height:120px;resize:vertical}
+  .legal h2{font-size:20px;padding-right:0;margin:28px 0 10px}
+  .legal h2::after{display:none}
+  .legal p{color:var(--muted);margin-bottom:12px}
+
+  footer{background:#0c0c0c;color:#d9d9d9;padding:64px 0 0;font-size:14px}
+  .foot{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.4fr;gap:40px}
+  footer .logo .name{font-size:32px}
+  footer h5{color:#fff;font-size:15px;margin-bottom:14px}
+  footer ul{list-style:none;display:grid;gap:8px}
+  footer ul a:hover,footer .soc a:hover,.bottom a:hover{color:var(--gold)}
+  .contact-line-f{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+  .contact-line-f .ic{width:18px;height:18px;color:var(--gold);margin-top:2px}
+  .soc{display:flex;gap:12px;margin-top:18px}
+  .soc a{width:38px;height:38px;border-radius:50%;background:#222;display:grid;place-items:center;color:#fff}
+  .soc .ic{width:18px;height:18px}
+  .news{display:flex;margin-top:14px;background:#1d1d1d;border-radius:999px;padding:5px;border:1px solid #2c2c2c}
+  .news input{flex:1;min-width:0;background:none;border:0;color:#fff;padding:0 16px;outline:none}
+  .news input::placeholder{color:#8a8a8a}
+  .news button{background:var(--gold);color:#111;border:0;font-weight:700;border-radius:999px;padding:12px 20px;cursor:pointer}
+  .bottom{margin-top:52px;border-top:1px solid #2a2a2a;padding:22px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#9a9a9a}
+  .bottom nav{display:flex;gap:18px;flex-wrap:wrap}
+
+  .wa-float{position:fixed;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.25);z-index:30;transition:transform .2s}
+  .wa-float:hover{transform:scale(1.06)}
+  .wa-float .ic{width:28px;height:28px}
+
+  @media (max-width:1080px){
+    .cats{grid-template-columns:repeat(3,1fr)}
+    .grid{grid-template-columns:repeat(3,1fr)}
+    .why .wrap{grid-template-columns:repeat(2,1fr)}
+    .why .title{grid-column:1 / -1}
+  }
+  @media (max-width:900px){
+    .hero .wrap,.two{grid-template-columns:1fr;gap:40px}
+    nav.main{order:3;width:100%;margin:0;overflow-x:auto;gap:22px;padding-bottom:6px}
+    .search{margin-left:auto;width:200px}
+    .foot{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 18px}
+    section{padding:52px 0}
+    .page{padding:40px 0 56px}
+    .cats{grid-template-columns:1fr 1fr;gap:12px}
+    .cat{height:210px}
+    .cat .ic{width:34px;height:34px;margin-top:22px}
+    .grid{grid-template-columns:1fr 1fr;gap:12px}
+    .thumb{height:180px}
+    .thumb .ic{width:70px;height:70px}
+    .info{padding:12px}
+    .info h4{font-size:14px}
+    .btn.sm{font-size:12px;padding:10px;gap:6px}
+    .search{width:150px}
+    .foot{grid-template-columns:1fr}
+    .hero-card{padding:26px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M3 21l1.6-4.7A9 9 0 1 1 8 19.6z"/><path d="M9 10c0 3 2 5 5 5l1-1.5-2-1-1 1c-1-.5-2-1.5-2.5-2.5l1-1-1-2z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h12v10H2z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="6" cy="17.5" r="2"/><circle cx="17" cy="17.5" r="2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-headset" viewBox="0 0 24 24"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><rect x="3" y="14" width="4" height="6" rx="1"/><rect x="17" y="14" width="4" height="6" rx="1"/></symbol>
+  <symbol id="i-shirt" viewBox="0 0 24 24"><path d="M8 3L3 6l2 4 2-1v11h10V9l2 1 2-4-5-3c-1 2-7 2-8 0z"/></symbol>
+  <symbol id="i-shoe" viewBox="0 0 24 24"><path d="M2 16c4 0 6-2 8-5l3 2c3 2 6 2 9 2v3H2z"/><path d="M6 14l2 2M11 16l2 2"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.5-9 9-9 9z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M15 3h-3a4 4 0 0 0-4 4v3H5v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 3 2.5 4.5 5 5"/></symbol>
+  <symbol id="i-crown" viewBox="0 0 24 24"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/></symbol>
+  <symbol id="i-medal" viewBox="0 0 24 24"><circle cx="12" cy="15" r="6"/><path d="M8 3l-2 6h4M16 3l2 6h-4M12 9V3"/></symbol>
+  <symbol id="i-badge" viewBox="0 0 24 24"><path d="M12 2l3 2.5 3.8-.3.6 3.8 3.1 2.2-1.5 3.5 1.5 3.5-3.1 2.2-.6 3.8-3.8-.3L12 22l-3-2.5-3.8.3-.6-3.8-3.1-2.2 1.5-3.5-1.5-3.5 3.1-2.2.6-3.8 3.8.3z"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#accueil" class="logo" aria-label="DOZO Concept Store, accueil">
+      <span class="name">DOZO</span><span class="sub">CONCEPT STORE</span>
+    </a>
+    <nav class="main" aria-label="Navigation principale">
+      <a href="#accueil">Accueil</a>
+      <a href="#boutique">Boutique</a>
+      <a href="#nouveautes">Nouveautés</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <label class="search">
+      <svg class="ic" style="width:18px;height:18px"><use href="#i-search"/></svg>
+      <input type="search" placeholder="Rechercher un produit..." aria-label="Rechercher un produit">
+    </label>
+    <a href="#contact" class="wa-top" aria-label="Nous écrire">
+      <svg class="ic"><use href="#i-whatsapp"/></svg>
+    </a>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="logo" style="align-items:flex-start"><span class="name">DOZO</span><span class="sub">CONCEPT STORE</span></div>
+        <p style="margin-top:16px;color:#9a9a9a">Plus qu’une boutique, un style de vie.</p>
+      </div>
+      <div>
+        <h5>Liens utiles</h5>
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#boutique">Boutique</a></li>
+          <li><a href="#nouveautes">Nouveautés</a></li>
+          <li><a href="#apropos">À propos</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <div class="contact-line-f"><svg class="ic"><use href="#i-phone"/></svg><span>+225 07 57 04 02 79</span></div>
+        <div class="contact-line-f"><svg class="ic"><use href="#i-pin"/></svg><span>24 J 40, Abidjan, Côte d’Ivoire</span></div>
+        <div class="contact-line-f"><svg class="ic"><use href="#i-mail"/></svg><span>contact@dozo.ci</span></div>
+        <div class="soc">
+          <a href="#" aria-label="Facebook"><svg class="ic"><use href="#i-facebook"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="ic"><use href="#i-instagram"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg class="ic"><use href="#i-tiktok"/></svg></a>
+          <a href="#contact" aria-label="WhatsApp"><svg class="ic"><use href="#i-whatsapp"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>Restez connectés</h5>
+        <p style="color:#9a9a9a">Recevez nos nouveautés et offres spéciales.</p>
+        <div class="news">
+          <input type="email" placeholder="Votre adresse e-mail" aria-label="Adresse e-mail">
+          <button type="button">S’abonner</button>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© <span id="year"></span> DOZO CONCEPT STORE. Tous droits réservés.</span>
+      <nav>
+        <a href="#mentions">Mentions légales</a>
+        <a href="#mentions">Politique de confidentialité</a>
+        <a href="#mentions">Conditions d’utilisation</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<a href="#contact" class="wa-float" aria-label="Nous écrire sur WhatsApp"><svg class="ic"><use href="#i-whatsapp"/></svg></a>
+
+<script>
+  // Numéro WhatsApp au format international, sans + ni espaces. À remplacer par le vôtre.
+  const WA = "2250757040279";
+  const waLink = m => "https://wa.me/" + WA + "?text=" + encodeURIComponent(m);
+  const ico = (id, cls = "ic") => `<svg class="${cls}"><use href="#i-${id}"/></svg>`;
+  const fmt = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " FCFA";
+
+  // Catalogue d'exemple : remplacez par vos produits réels
+  const PRODUCTS = [
+    {name:"T-shirt homme DOZO", cat:"hommes", price:12000, icon:"shirt", badge:"Nouveau"},
+    {name:"Ensemble femme élégant", cat:"femmes", price:20000, old:25000, icon:"shirt", badge:"Promo"},
+    {name:"Sneakers unisexes", cat:"chaussures", price:30000, icon:"shoe", badge:"Nouveau"},
+    {name:"Ensemble enfant", cat:"enfants", price:15000, icon:"shirt", badge:"Nouveau"},
+    {name:"Sac à main femme", cat:"accessoires", price:15000, old:18000, icon:"bag", badge:"Promo"},
+    {name:"Polo homme DOZO", cat:"hommes", price:14000, icon:"shirt"},
+    {name:"Robe femme wax", cat:"femmes", price:18000, icon:"shirt", badge:"Nouveau"},
+    {name:"T-shirt enfant DOZO", cat:"enfants", price:8000, icon:"shirt"},
+    {name:"Baskets montantes", cat:"chaussures", price:28000, icon:"shoe"},
+    {name:"Sac à dos cuir", cat:"accessoires", price:22000, icon:"bag", badge:"Nouveau"}
+  ];
+  const CATS = [["hommes","Hommes","shirt","c1"],["femmes","Femmes","shirt","c2"],["enfants","Enfants","shirt","c3"],["chaussures","Chaussures","shoe","c4"],["accessoires","Accessoires","bag","c5"]];
+
+  const card = p => `
+    <article class="card">
+      <div class="thumb">${p.badge ? `<span class="badge">${p.badge}</span>` : ""}${ico(p.icon, "ic")}</div>
+      <div class="info">
+        <h4>${p.name}</h4>
+        <p class="price">${p.old ? `<s class="old">${fmt(p.old)}</s><span class="new">${fmt(p.price)}</span>` : fmt(p.price)}</p>
+        <a class="btn sm" target="_blank" rel="noopener" href="${waLink("Bonjour DOZO, je veux commander : " + p.name + " (" + fmt(p.price) + ")")}">${ico("whatsapp")}Commander sur WhatsApp</a>
+      </div>
+    </article>`;
+
+  const pageHead = (title, text) => `<div class="wrap page-head"><h1>${title}</h1>${text ? `<p>${text}</p>` : ""}</div>`;
+
+  const V = {
+    accueil: () => `
+      <div class="hero"><div class="wrap">
+        <div>
+          <p class="brand-line">DOZO Concept Store</p>
+          <h1>Le style qui vous <em>ressemble</em></h1>
+          <p class="lead">Découvrez notre collection de vêtements et accessoires pour hommes, femmes et enfants. Qualité, tendance et élégance au rendez-vous.</p>
+          <a href="#boutique" class="btn">Voir la boutique ${ico("arrow")}</a>
+        </div>
+        <div class="hero-card">
+          <div class="logo"><span class="name">DOZO</span><span class="sub">CONCEPT STORE</span></div>
+          <div class="perks">
+            <div class="perk"><div class="box">${ico("star")}</div><div><strong>Produits de qualité</strong><span>Sélectionnés avec soin</span></div></div>
+            <div class="perk"><div class="box">${ico("truck")}</div><div><strong>Livraison rapide</strong><span>Domicile ou point relais</span></div></div>
+            <div class="perk"><div class="box">${ico("shield")}</div><div><strong>Paiement sécurisé</strong><span>Via WhatsApp ou en boutique</span></div></div>
+            <div class="perk"><div class="box">${ico("headset")}</div><div><strong>Service client</strong><span>Toujours à votre écoute</span></div></div>
+          </div>
+        </div>
+      </div></div>
+      <section style="padding-bottom:40px"><div class="wrap">
+        <div class="sec-head"><h2>Nos catégories</h2><a href="#boutique" class="more">Voir toutes les catégories →</a></div>
+        <div class="cats">${CATS.map(c => `<a href="#boutique" class="cat ${c[3]}">${ico(c[2])}<h3>${c[1]}</h3><small>Voir la collection →</small></a>`).join("")}</div>
+      </div></section>
+      <section style="padding-top:40px"><div class="wrap">
+        <div class="sec-head"><h2>Produits en vedette</h2><a href="#boutique" class="more">Voir tous les produits →</a></div>
+        <div class="grid">${PRODUCTS.slice(0, 5).map(card).join("")}</div>
+      </div></section>
+      <div class="why"><div class="wrap">
+        <div class="title">${ico("crown")}Pourquoi choisir DOZO ?</div>
+        <div class="why-item">${ico("badge")}<div><strong>Mode tendance</strong><span>Toujours au goût du jour</span></div></div>
+        <div class="why-item">${ico("medal")}<div><strong>Qualité garantie</strong><span>Des produits durables</span></div></div>
+        <div class="why-item">${ico("truck")}<div><strong>Livraison partout en CI</strong><span>Abidjan et autres villes</span></div></div>
+        <div class="why-item">${ico("headset")}<div><strong>Contact facile</strong><span>Via WhatsApp et réseaux sociaux</span></div></div>
+      </div></div>`,
+
+    boutique: () => `
+      ${pageHead("Boutique", "Parcourez toute la collection et commandez directement sur WhatsApp.")}
+      <div class="wrap">
+        <div class="chips" role="group" aria-label="Filtrer par catégorie">
+          <button class="chip" data-f="tous" aria-pressed="true">Tous</button>
+          ${CATS.map(c => `<button class="chip" data-f="${c[0]}" aria-pressed="false">${c[1]}</button>`).join("")}
+        </div>
+        <div class="grid" id="grid">${PRODUCTS.map(card).join("")}</div>
+      </div>`,
+
+    nouveautes: () => `
+      ${pageHead("Nouveautés", "Les dernières arrivées de la boutique DOZO.")}
+      <div class="wrap"><div class="grid">${PRODUCTS.filter(p => p.badge === "Nouveau").map(card).join("")}</div></div>`,
+
+    apropos: () => `
+      ${pageHead("À propos de DOZO")}
+      <div class="wrap two">
+        <div class="prose">
+          <p>DOZO Concept Store est né d’une idée simple : la mode doit ressembler à celui ou celle qui la porte. Nous sélectionnons des vêtements, des chaussures et des accessoires pour hommes, femmes et enfants, en gardant toujours un œil sur la qualité et la tendance.</p>
+          <p>Notre boutique est à Abidjan, et nous livrons partout en Côte d’Ivoire. Vous commandez comme vous discutez : simplement, sur WhatsApp.</p>
+        </div>
+        <div>
+          <div class="values">
+            <div class="value">${ico("medal")}<div><strong>Qualité</strong><span>Des matières choisies et des finitions soignées.</span></div></div>
+            <div class="value">${ico("badge")}<div><strong>Tendance</strong><span>Une sélection renouvelée pour suivre le style du moment.</span></div></div>
+            <div class="value">${ico("headset")}<div><strong>Proximité</strong><span>Une équipe disponible pour vous conseiller.</span></div></div>
+          </div>
+        </div>
+      </div>`,
+
+    contact: () => `
+      ${pageHead("Contact", "Une question, une taille, une commande ? Écrivez-nous.")}
+      <div class="wrap two">
+        <div class="info-card">
+          <div class="contact-line">${ico("phone")}<div><strong>Téléphone</strong><br><span style="color:var(--muted)">+225 07 57 04 02 79</span></div></div>
+          <div class="contact-line">${ico("pin")}<div><strong>Adresse</strong><br><span style="color:var(--muted)">24 J 40, Abidjan, Côte d’Ivoire</span></div></div>
+          <div class="contact-line">${ico("mail")}<div><strong>E-mail</strong><br><span style="color:var(--muted)">contact@dozo.ci</span></div></div>
+        </div>
+        <div class="info-card">
+          <div class="field"><label for="cn">Votre nom</label><input id="cn" type="text" autocomplete="name"></div>
+          <div class="field"><label for="cm">Votre message</label><textarea id="cm"></textarea></div>
+          <button class="btn sm" data-act="send" style="margin-top:0">${ico("whatsapp")}Envoyer sur WhatsApp</button>
+        </div>
+      </div>`,
+
+    mentions: () => `
+      ${pageHead("Informations légales")}
+      <div class="wrap legal">
+        <h2>Mentions légales</h2>
+        <p>Éditeur du site : DOZO Concept Store, 24 J 40, Abidjan, Côte d’Ivoire. Contact : contact@dozo.ci. Hébergeur : à compléter.</p>
+        <h2>Politique de confidentialité</h2>
+        <p>Les informations que vous nous transmettez (nom, numéro de téléphone, message) servent uniquement à traiter vos commandes et à répondre à vos demandes. Nous ne les revendons pas.</p>
+        <h2>Conditions d’utilisation</h2>
+        <p>Les prix sont indiqués en francs CFA. Les commandes sont confirmées sur WhatsApp. Ce texte doit être complété avec vos conditions de vente et de livraison.</p>
+      </div>`
+  };
+
+  const TITLES = {accueil:"DOZO Concept Store | Le style qui vous ressemble", boutique:"Boutique | DOZO Concept Store", nouveautes:"Nouveautés | DOZO Concept Store", apropos:"À propos | DOZO Concept Store", contact:"Contact | DOZO Concept Store", mentions:"Informations légales | DOZO Concept Store"};
+  const app = document.getElementById("app");
+
+  function route() {
+    const h = location.hash.slice(1);
+    const page = V[h] ? h : "accueil";
+    app.innerHTML = page === "accueil" ? V.accueil() : `<div class="page">${V[page]()}</div>`;
+    document.querySelectorAll("nav.main a").forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + page));
+    document.title = TITLES[page];
+    window.scrollTo(0, 0);
+  }
+
+  document.addEventListener("click", e => {
+    const chip = e.target.closest("[data-f]");
+    if (chip) {
+      const f = chip.dataset.f;
+      document.querySelectorAll("[data-f]").forEach(b => b.setAttribute("aria-pressed", b === chip));
+      const list = f === "tous" ? PRODUCTS : PRODUCTS.filter(p => p.cat === f);
+      document.getElementById("grid").innerHTML = list.map(card).join("");
+      return;
+    }
+    const send = e.target.closest('[data-act="send"]');
+    if (send) {
+      const n = document.getElementById("cn").value.trim() || "un client";
+      const m = document.getElementById("cm").value.trim();
+      window.open(waLink("Bonjour DOZO, je suis " + n + ". " + m), "_blank", "noopener");
+    }
+  });
+
+  window.addEventListener("hashchange", route);
+  document.getElementById("year").textContent = new Date().getFullYear();
+  route();
+</script>
+</body>
+</html>
